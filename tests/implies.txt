@@ -1,0 +1,62 @@
+; total 5 errors 3
+variables: x x2 y z
+
+block entry:
+  r1 = load x
+  c1 = cmp ge r1 5
+  c2 = cmp ge r1 6
+
+  ; this assert generates also one false path because we're not sure about c2
+  assert c2
+
+  rx2 = load x2
+  ax2 = cmp ge rx2 2
+  ; same here
+  assert ax2
+
+  ; c2 => c1 so we should get to implies block
+  jump c1 implies error
+
+block implies:
+  r3 = load x2
+  cx2 = cmp ge r3 1
+  ; equivalent to true here because of assert rx2, it should step over without generating a false branch
+  assert cx2
+
+  r4 = load y
+  cy = cmp lt r4 5
+  ; this is not implied so it should try both options
+  jump cy implies2 passCondThroughJump
+
+block error:
+  assert false
+
+block implies2:
+  halt
+  ; let's try an empty block
+
+block passCondThroughJump:
+  r5 = load y
+  cy2 = cmp ge r5 5
+  ; this should hold as the jump comes here only when y >= 5
+  ; and not create a false branch
+  assert cy2
+
+  r6 = load z
+  tz = cmp eq r6 5
+
+  jump tz pathConditionArith contradiction
+
+block pathConditionArith:
+  r8  = load z
+  r8a = add r8 5
+  tz2 = cmp eq r8a 10
+  ; should hold because we got here with z = 5
+  assert tz2
+
+block contradiction:
+  ; try existing register from another block
+  tx2 = cmp eq r3 0
+  ; contradiction because x2 >= 1 by assumption
+  assert tx2
+

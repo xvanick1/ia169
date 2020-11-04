@@ -1,0 +1,24 @@
+; total 11, errors 10
+variables: n x
+
+block entry:
+  store 0 to n
+  jump true for for
+
+block for:
+  r = load n
+  r2 = add r 1
+  store r2 to n
+  c = cmp lt r 10
+  jump c loop halt
+
+block loop:
+  rx = load x
+  rn = load n
+  invariant = cmp ge rx rn
+  assert invariant
+  jump true for for
+
+block halt:
+  print r
+  ; try halting with no instructions left
