@@ -1,16 +1,27 @@
 MODULE main
 VAR
     mouse: {a1,k1,a3,a4,a5,a6,d1,cheese};
+    key1: boolean;
 ASSIGN
     init(mouse) := a1;
+    init(key1) := FALSE;
+
     next(mouse) := case
         mouse = a1 : k1;
         mouse = k1 : {a1,a3};
         mouse = a3 : {k1,a4};
         mouse = a4 : {a3,a5};
         mouse = a5 : {a4,a6};
-        mouse = a6 : {a5,d1};
+        mouse = a6 & !key1 : {a5};
+        mouse = a6 & key1 : {a5,d1};
         mouse = d1 : {a6,cheese};
         mouse = cheese : d1;
     esac;
+
+    next(key1) := case
+        next(mouse) = k1: TRUE;
+        key1 = TRUE: TRUE;
+        TRUE: FALSE;
+    esac;
+
 SPEC EF mouse = cheese; -- p10
