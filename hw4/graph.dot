@@ -1,0 +1,20 @@
+digraph S {
+  NODE0[label="!a !b !c" shape=doublecircle color=red]
+  NODE1[label="a !b !c" shape=doublecircle ]
+  NODE2[label="!a b !c" shape=doublecircle ]
+  NODE3[label="a b !c" shape=doublecircle color=red]
+  NODE4[label="!a !b c" shape=doublecircle ]
+  NODE5[label="a !b c" shape=doublecircle color=red]
+  NODE6[label="!a b c"  color=red]
+  NODE7[label="a b c" shape=doublecircle color=red]
+
+NODE0 -> NODE0
+NODE1 -> NODE2
+NODE2 -> NODE4
+NODE3 -> NODE6
+NODE4 -> NODE1
+NODE5 -> NODE3
+NODE6 -> NODE5
+NODE7 -> NODE7
+
+}

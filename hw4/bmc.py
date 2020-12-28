@@ -9,17 +9,20 @@ from z3 import *
 #from bmcparsers.pysmtparser import PySMTParser
 #from pysmt.shortcuts import *
 
-index = 0
+
+def subst_var_to_var_k(formulae, variables, k):
+    for variable in variables:
+        variable_k = Bool(str(variable) + "_" + str(k))
+        formulae = substitute(formulae, (variable, variable_k))
+    return formulae
 
 
-def fresh_constant(s):
-    global index
-    index += 1
-    return Const("*f%d" % index, s)
+def subst_var_to_varn_k(formulae, variables, k):
+    for var in variables:
+        var_k = Bool(str(var)[:-1] + "_" + str(k))
+        formulae = substitute(formulae, (var, var_k))
+    return formulae
 
-
-def zipp(xs, ys):
-    return [p for p in zip(xs, ys)]
 
 def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False):
     """
@@ -38,13 +41,14 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
     \param completeness   set to True to perform completeness check
     """
 
-    k = 0
-
     # Implement the BMC algorithm here
-
+    k = 0
     s = Solver()
-    s.add(init)  # stav init pridá do solveru
+
+    formulae = init
+    formulae = subst_var_to_var_k(formulae, xs, k)
     while True:
+        pass
 
         '''Check max k reached'''
         if maxk is not None and k >= maxk:
@@ -52,19 +56,19 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
             print(f"Finished with k={k}.")
             return False
 
+        temp = subst_var_to_var_k(prp, xs, k)
+        temp = Not(temp)
+        formulae_to_check = And(formulae, temp)
 
-        p = fresh_constant(BoolSort())
-        s.add(Implies(p, Not(prp)))
-
-        if sat == s.check(p):
-            print(s.model())
+        if sat == s.check(formulae_to_check):
             break
 
-        s.add(trans)
-        temp = [fresh_constant(x.sort()) for x in xs]
-        trans = substitute(trans, zipp(xns + xs, temp + xns))
-        prp = substitute(prp, zipp(xs, xns))
-        xs, xns = xns, temp
+        temp = None
+        temp = subst_var_to_var_k(trans, xs, k)
+        temp = subst_var_to_varn_k(temp, xns, k + 1)
+
+        formulae = And(formulae, temp)
+
         k += 1
 
     print(f"The property does not hold.")
