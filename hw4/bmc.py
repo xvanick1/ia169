@@ -12,15 +12,15 @@ from z3 import *
 
 def subst_var_to_var_k(formulae, variables, k):
     for variable in variables:
-        variable_k = Bool(str(variable) + "_" + str(k))
+        variable_k = Bool(str(variable) + str(k))
         formulae = substitute(formulae, (variable, variable_k))
     return formulae
 
 
-def subst_var_to_varn_k(formulae, variables, k):
-    for var in variables:
-        var_k = Bool(str(var)[:-1] + "_" + str(k))
-        formulae = substitute(formulae, (var, var_k))
+def subst_var_to_var_nk(formulae, variables, k):
+    for variable in variables:
+        variable_nk = Bool(str(variable)[:-1] + str(k))
+        formulae = substitute(formulae, (variable, variable_nk))
     return formulae
 
 
@@ -44,9 +44,45 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
     # Implement the BMC algorithm here
     k = 0
     s = Solver()
+    history = []
+
+
+    if backward:
+        pass
+
+        formulae = Not(prp)
+        formulae = subst_var_to_var_k(formulae, xs, k)
+        while True:
+            pass
+
+            '''Check max k reached'''
+            if maxk is not None and k >= maxk:
+                print(f"Unknown.")
+                print(f"Finished with k={k}.")
+                return False
+
+            initial = subst_var_to_var_k(init, xs, k)
+            formulae_to_check = And(formulae, initial)
+
+            if sat == s.check(formulae_to_check):
+                break
+
+            temp = subst_var_to_var_k(trans, xs, k)
+            temp = subst_var_to_var_nk(temp, xns, k + 1)
+
+            formulae = And(formulae, temp)
+
+            k += 1
+
+        print(f"The property does not hold.")
+        print(f"Finished with k={k}.")
+        return True
+
 
     formulae = init
     formulae = subst_var_to_var_k(formulae, xs, k)
+    if completeness:
+        history.append(formulae)
     while True:
         pass
 
@@ -56,25 +92,30 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
             print(f"Finished with k={k}.")
             return False
 
-        temp = subst_var_to_var_k(prp, xs, k)
-        temp = Not(temp)
-        formulae_to_check = And(formulae, temp)
+
+        final = subst_var_to_var_k(prp, xs, k)
+        final = Not(final)
+        formulae_to_check = And(formulae, final)
 
         if sat == s.check(formulae_to_check):
             break
 
-        temp = None
         temp = subst_var_to_var_k(trans, xs, k)
-        temp = subst_var_to_varn_k(temp, xns, k + 1)
+        temp = subst_var_to_var_nk(temp, xns, k + 1)
+
+        if completeness:
+            if temp in history:
+                print(f"The property does hold.")
+                print(f"Finished with k={k}.")
+                return False
+            history.append(temp)
 
         formulae = And(formulae, temp)
-
         k += 1
 
     print(f"The property does not hold.")
     print(f"Finished with k={k}.")
     return True
-
 
 if __name__ == "__main__":
     from sys import argv

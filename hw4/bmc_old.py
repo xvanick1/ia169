@@ -47,9 +47,9 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
     while True:
 
         '''Check max k reached'''
-        if maxk is not None and k > maxk:
+        if maxk is not None and k >= maxk:
             print(f"Unknown.")
-            print(f"Finished with k={k-1}.")
+            print(f"Finished with k={k}.")
             return False
 
         p = fresh_constant(BoolSort())
@@ -67,7 +67,7 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
         k += 1
 
     print(f"The property does not hold.")
-    print(f"Finished with k={k-1}.")
+    print(f"Finished with k={k}.")
     return True
 
 
