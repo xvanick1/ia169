@@ -44,8 +44,8 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
     # Implement the BMC algorithm here
     k = 0
     s = Solver()
+    s2 = Solver()
     history = []
-
 
     if backward:
         pass
@@ -67,22 +67,22 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
             if sat == s.check(formulae_to_check):
                 break
 
-            temp = subst_var_to_var_k(trans, xs, k)
-            temp = subst_var_to_var_nk(temp, xns, k + 1)
+            temp = subst_var_to_var_k(trans, xs, k + 1)
+            temp = subst_var_to_var_nk(temp, xns, k)
 
             formulae = And(formulae, temp)
-
             k += 1
 
         print(f"The property does not hold.")
         print(f"Finished with k={k}.")
         return True
 
+############################################################
 
     formulae = init
     formulae = subst_var_to_var_k(formulae, xs, k)
     if completeness:
-        history.append(formulae)
+        s2.add(formulae)
     while True:
         pass
 
@@ -91,7 +91,6 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
             print(f"Unknown.")
             print(f"Finished with k={k}.")
             return False
-
 
         final = subst_var_to_var_k(prp, xs, k)
         final = Not(final)
@@ -104,10 +103,11 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
         temp = subst_var_to_var_nk(temp, xns, k + 1)
 
         if completeness:
-            if temp in history:
+            if s2.check(And(Implies(temp, history[k]), Implies(history[k], temp))) == unsat:
                 print(f"The property does hold.")
                 print(f"Finished with k={k}.")
                 return False
+
             history.append(temp)
 
         formulae = And(formulae, temp)
