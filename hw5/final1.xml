@@ -17,48 +17,62 @@ chan goatStopEating;</declaration>
 		<declaration>// Place local declarations here.</declaration>
 		<location id="id0" x="119" y="-527">
 			<name x="93" y="-561">FWGC_</name>
+			<committed/>
 		</location>
 		<location id="id1" x="-901" y="-323">
 			<name x="-911" y="-357">WGC_F</name>
 			<label kind="invariant" x="-1020" y="-314">farmerIsNotLazy&lt;=0</label>
+			<committed/>
 		</location>
 		<location id="id2" x="-187" y="-119">
 			<name x="-170" y="-119">GC_FW</name>
 			<label kind="invariant" x="-187" y="-110">farmerIsNotLazy&lt;=0</label>
+			<committed/>
 		</location>
 		<location id="id3" x="425" y="-119">
 			<name x="415" y="-153">WC_FG</name>
+			<committed/>
 		</location>
 		<location id="id4" x="901" y="-119">
 			<name x="891" y="-153">WG_FC</name>
+			<committed/>
 		</location>
 		<location id="id5" x="-697" y="153">
 			<name x="-722" y="119">FGC_W</name>
+			<committed/>
 		</location>
 		<location id="id6" x="153" y="153">
 			<name x="110" y="119">FWC_G</name>
+			<committed/>
 		</location>
 		<location id="id7" x="833" y="153">
 			<name x="823" y="119">FWG_C</name>
+			<committed/>
 		</location>
 		<location id="id8" x="-867" y="629">
 			<name x="-877" y="595">C_FWG</name>
+			<committed/>
 		</location>
 		<location id="id9" x="51" y="629">
 			<name x="41" y="595">G_FWC</name>
+			<committed/>
 		</location>
 		<location id="id10" x="901" y="629">
 			<name x="892" y="578">W_FGC</name>
+			<committed/>
 		</location>
 		<location id="id11" x="-493" y="969">
 			<name x="-503" y="935">FC_WG</name>
+			<committed/>
 		</location>
 		<location id="id12" x="85" y="969">
 			<name x="75" y="935">FG_WC</name>
+			<committed/>
 		</location>
 		<location id="id13" x="935" y="969">
 			<name x="925" y="935">FW_GC</name>
 			<label kind="invariant" x="926" y="960">farmerIsNotLazy&lt;=0</label>
+			<committed/>
 		</location>
 		<location id="id14" x="85" y="1309">
 			<name x="75" y="1275">_FWGC</name>
@@ -222,7 +236,6 @@ chan goatStopEating;</declaration>
 			<source ref="id4"/>
 			<target ref="id15"/>
 			<label kind="guard" x="1190" y="-144">wolfHungryTime &gt;= 40</label>
-			<label kind="synchronisation" x="1198" y="-119">goatStopEating!</label>
 			<nail x="1377" y="-119"/>
 			<nail x="1377" y="-833"/>
 		</transition>
@@ -676,6 +689,14 @@ chan goatStopEating;</declaration>
 			<label kind="invariant" x="238" y="-34">goatEatsCabbage &lt;= 1</label>
 		</location>
 		<init ref="id52"/>
+		<transition>
+			<source ref="id52"/>
+			<target ref="id52"/>
+			<label kind="guard" x="-204" y="8">cabbage==0</label>
+			<label kind="synchronisation" x="-212" y="25">goatStopEating?</label>
+			<nail x="-170" y="-102"/>
+			<nail x="-170" y="102"/>
+		</transition>
 		<transition>
 			<source ref="id53"/>
 			<target ref="id53"/>
