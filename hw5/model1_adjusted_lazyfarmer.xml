@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+clock globalTimer;
+clock timeOnBoat;
+clock wolfHungryTime;
+clock goatEatsCabbage;
+
+int cabbage = 20;
+int usedRaftCounter = 0;
+int goatWolfTogetherCounter = 0;
+
+
+chan goatStartEating;
+chan goatStopEating;</declaration>
+	<template>
+		<name x="5" y="5">Model</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="119" y="-527">
+			<name x="93" y="-561">FWGC_</name>
+		</location>
+		<location id="id1" x="-901" y="-323">
+			<name x="-911" y="-357">WGC_F</name>
+		</location>
+		<location id="id2" x="-187" y="-119">
+			<name x="-170" y="-119">GC_FW</name>
+		</location>
+		<location id="id3" x="425" y="-119">
+			<name x="415" y="-153">WC_FG</name>
+		</location>
+		<location id="id4" x="901" y="-119">
+			<name x="891" y="-153">WG_FC</name>
+		</location>
+		<location id="id5" x="-697" y="153">
+			<name x="-722" y="119">FGC_W</name>
+		</location>
+		<location id="id6" x="153" y="153">
+			<name x="110" y="119">FWC_G</name>
+		</location>
+		<location id="id7" x="833" y="153">
+			<name x="823" y="119">FWG_C</name>
+		</location>
+		<location id="id8" x="-867" y="629">
+			<name x="-877" y="595">C_FWG</name>
+		</location>
+		<location id="id9" x="51" y="629">
+			<name x="41" y="595">G_FWC</name>
+		</location>
+		<location id="id10" x="901" y="629">
+			<name x="892" y="578">W_FGC</name>
+		</location>
+		<location id="id11" x="-493" y="969">
+			<name x="-503" y="935">FC_WG</name>
+		</location>
+		<location id="id12" x="85" y="969">
+			<name x="75" y="935">FG_WC</name>
+		</location>
+		<location id="id13" x="935" y="969">
+			<name x="925" y="935">FW_GC</name>
+		</location>
+		<location id="id14" x="85" y="1309">
+			<name x="75" y="1275">_FWGC</name>
+		</location>
+		<location id="id15" x="-17" y="-833">
+			<name x="-51" y="-824">goatIsDead</name>
+		</location>
+		<location id="id16" x="-229" y="-518">
+			<name x="-288" y="-552">FonBoatToWGC_F</name>
+			<label kind="invariant" x="-357" y="-535">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id17" x="-637" y="-340">
+			<name x="-647" y="-374">FonBoatToWGCF_</name>
+			<label kind="invariant" x="-620" y="-357">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id18" x="-76" y="-408">
+			<name x="-86" y="-442">FWonBoatToGC_FW</name>
+			<label kind="invariant" x="-102" y="-425">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id19" x="-59" y="-187">
+			<name x="-69" y="-221">FWonBoatToFWGC_</name>
+			<label kind="invariant" x="-59" y="-204">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id20" x="195" y="-382">
+			<name x="187" y="-416">FGonBoatToWC_FG</name>
+			<label kind="invariant" x="204" y="-399">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id21" x="501" y="-238">
+			<name x="501" y="-272">FGonBoatToWGCF_</name>
+			<label kind="invariant" x="518" y="-255">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id22" x="799" y="-255">
+			<name x="688" y="-289">FConBoatToFWGC_</name>
+			<label kind="invariant" x="671" y="-272">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id23" x="467" y="-518">
+			<name x="457" y="-552">FConBoatToWG_FC</name>
+			<label kind="invariant" x="484" y="-535">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id24" x="-399" y="-110">
+			<name x="-518" y="-144">FonBoatToFGC_W</name>
+			<label kind="invariant" x="-527" y="-127">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id25" x="-535" y="110">
+			<name x="-527" y="85">FonBoatToGC_FW</name>
+			<label kind="invariant" x="-518" y="102">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id26" x="272" y="-93">
+			<name x="144" y="-127">FonBoatToFWC_G</name>
+			<label kind="invariant" x="136" y="-102">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id27" x="297" y="102">
+			<name x="287" y="68">FonBoatToWC_FG</name>
+			<label kind="invariant" x="314" y="85">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id28" x="773" y="-76">
+			<name x="654" y="-68">FonBoatToFWG_C</name>
+			<label kind="invariant" x="620" y="-51">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id29" x="953" y="102">
+			<name x="943" y="68">FonBoatToWG_FC</name>
+			<label kind="invariant" x="960" y="85">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id30" x="986" y="552">
+			<name x="977" y="518">FGonBoatToFWG_C</name>
+			<label kind="invariant" x="994" y="535">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id31" x="850" y="280">
+			<name x="791" y="280">FGonBoatToW_FGC</name>
+			<label kind="invariant" x="782" y="297">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id32" x="229" y="586">
+			<name x="238" y="586">FWonBoatToFWG_C</name>
+			<label kind="invariant" x="238" y="603">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id33" x="612" y="153">
+			<name x="535" y="119">FWonBoatToG_FWC</name>
+			<label kind="invariant" x="544" y="161">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id34" x="280" y="229">
+			<name x="263" y="195">FConBoatToW_FGC</name>
+			<label kind="invariant" x="289" y="212">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id35" x="680" y="637">
+			<name x="527" y="629">FConBoatToFWC_G</name>
+			<label kind="invariant" x="561" y="646">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id36" x="-493" y="229">
+			<name x="-503" y="195">FConBoatToG_FWC</name>
+			<label kind="invariant" x="-476" y="212">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id37" x="-161" y="612">
+			<name x="-212" y="569">FConBoatToFGC_W</name>
+			<label kind="invariant" x="-204" y="586">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id38" x="-697" y="578">
+			<name x="-714" y="527">FWonBoatToFWC_G</name>
+			<label kind="invariant" x="-714" y="544">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id39" x="-17" y="119">
+			<name x="-25" y="85">FWonBoatToC_FWG</name>
+			<label kind="invariant" x="-161" y="102">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id40" x="-875" y="501">
+			<name x="-918" y="459">FGonBoatToFGC_W</name>
+			<label kind="invariant" x="-918" y="476">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id41" x="-892" y="195">
+			<name x="-1028" y="204">FGonBoatToC_FWG</name>
+			<label kind="invariant" x="-1054" y="221">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id42" x="-867" y="765">
+			<name x="-877" y="731">FonBoatToFC_WG</name>
+			<label kind="invariant" x="-850" y="748">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id43" x="-476" y="824">
+			<name x="-486" y="790">FonBoatToC_FWG</name>
+			<label kind="invariant" x="-459" y="807">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id44" x="-68" y="705">
+			<name x="-204" y="688">FonBoatToFG_WC</name>
+			<label kind="invariant" x="-204" y="705">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id45" x="170" y="892">
+			<name x="160" y="858">FonBoatToG_FWC</name>
+			<label kind="invariant" x="187" y="875">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id46" x="816" y="705">
+			<name x="695" y="722">FonBoatToFW_GC</name>
+			<label kind="invariant" x="680" y="705">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id47" x="1045" y="892">
+			<name x="1035" y="858">FonBoatToW_FGC</name>
+			<label kind="invariant" x="1062" y="875">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id48" x="850" y="1122">
+			<name x="840" y="1088">FWonBoatTo_FWGC</name>
+			<label kind="invariant" x="867" y="1105">timeOnBoat&lt;=17</label>
+		</location>
+		<location id="id49" x="195" y="1071">
+			<name x="185" y="1037">FGonBoatTo_FWGC</name>
+			<label kind="invariant" x="212" y="1054">timeOnBoat&lt;=27</label>
+		</location>
+		<location id="id50" x="-459" y="1113">
+			<name x="-469" y="1079">FConBoatTo_FWGC</name>
+			<label kind="invariant" x="-433" y="1096">timeOnBoat&lt;=11</label>
+		</location>
+		<location id="id51" x="289" y="-629">
+			<name x="279" y="-663">GotToLake</name>
+		</location>
+		<init ref="id51"/>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id15"/>
+			<label kind="guard" x="-1257" y="935">wolfHungryTime &gt;= 40</label>
+			<nail x="-1275" y="969"/>
+			<nail x="-1275" y="-875"/>
+			<nail x="-17" y="-875"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id15"/>
+			<label kind="guard" x="1190" y="-144">wolfHungryTime &gt;= 40</label>
+			<nail x="1377" y="-119"/>
+			<nail x="1377" y="-833"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id15"/>
+			<label kind="guard" x="-867" y="-841">wolfHungryTime &gt;= 40</label>
+			<label kind="synchronisation" x="-858" y="-824">goatStopEating!</label>
+			<nail x="-901" y="-841"/>
+		</transition>
+		<transition>
+			<source ref="id51"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="144" y="-595">wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id48"/>
+			<target ref="id14"/>
+			<label kind="guard" x="391" y="1224">timeOnBoat&gt;=13</label>
+			<label kind="synchronisation" x="382" y="1190">goatStopEating!</label>
+			<label kind="assignment" x="382" y="1164">usedRaftCounter+=1</label>
+			<label kind="comments" x="527" y="1207">FW-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id48"/>
+			<label kind="assignment" x="868" y="1045">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id49"/>
+			<target ref="id14"/>
+			<label kind="guard" x="103" y="1156">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="102" y="1173">usedRaftCounter+=1</label>
+			<label kind="comments" x="144" y="1190">FG-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id49"/>
+			<label kind="assignment" x="144" y="1003">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id50"/>
+			<target ref="id14"/>
+			<label kind="guard" x="-195" y="1215">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-246" y="1198">usedRaftCounter+=1</label>
+			<label kind="comments" x="-136" y="1258">FC-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id50"/>
+			<label kind="guard" x="-467" y="1037">wolfHungryTime &lt; 40</label>
+			<label kind="assignment" x="-476" y="1020">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id47"/>
+			<target ref="id10"/>
+			<label kind="guard" x="1020" y="680">timeOnBoat&gt;=7</label>
+			<label kind="synchronisation" x="1028" y="697">goatStopEating!</label>
+			<label kind="assignment" x="1028" y="714">usedRaftCounter+=1</label>
+			<label kind="comments" x="1062" y="654">F-&gt;</label>
+			<nail x="1088" y="765"/>
+			<nail x="1062" y="680"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id47"/>
+			<label kind="assignment" x="977" y="918">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id46"/>
+			<target ref="id13"/>
+			<label kind="guard" x="680" y="867">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="680" y="884">usedRaftCounter+=1</label>
+			<label kind="comments" x="714" y="841">&lt;-F</label>
+			<nail x="688" y="842"/>
+			<nail x="782" y="952"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id46"/>
+			<label kind="synchronisation" x="790" y="671">goatStartEating!</label>
+			<label kind="assignment" x="799" y="654">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id45"/>
+			<target ref="id9"/>
+			<label kind="guard" x="178" y="748">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="153" y="765">usedRaftCounter+=1</label>
+			<label kind="comments" x="170" y="722">F-&gt;</label>
+			<nail x="229" y="773"/>
+			<nail x="204" y="680"/>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id45"/>
+			<label kind="assignment" x="136" y="926">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id44"/>
+			<target ref="id12"/>
+			<label kind="guard" x="-161" y="884">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-170" y="901">usedRaftCounter+=1</label>
+			<label kind="comments" x="-110" y="858">&lt;-F</label>
+			<nail x="-144" y="858"/>
+			<nail x="-68" y="952"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id44"/>
+			<label kind="assignment" x="-85" y="671">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id43"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-671" y="739">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-671" y="756">usedRaftCounter+=1</label>
+			<label kind="comments" x="-637" y="722">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id43"/>
+			<label kind="guard" x="-484" y="909">wolfHungryTime &lt; 40</label>
+			<label kind="assignment" x="-484" y="896">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id42"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-714" y="867">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-705" y="884">usedRaftCounter+=1,
+goatWolfTogetherCounter +=1</label>
+			<label kind="comments" x="-688" y="841">&lt;-F</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id42"/>
+			<label kind="assignment" x="-969" y="697">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id31"/>
+			<target ref="id10"/>
+			<label kind="guard" x="807" y="450">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="799" y="425">usedRaftCounter+=1</label>
+			<label kind="comments" x="833" y="476">FG-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id31"/>
+			<label kind="assignment" x="773" y="212">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id30"/>
+			<target ref="id7"/>
+			<label kind="guard" x="1003" y="272">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="986" y="289">usedRaftCounter+=1</label>
+			<label kind="comments" x="1028" y="246">&lt;-FG</label>
+			<nail x="1020" y="263"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id30"/>
+			<label kind="assignment" x="943" y="586">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id34"/>
+			<target ref="id10"/>
+			<label kind="guard" x="578" y="484">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="586" y="518">usedRaftCounter+=1</label>
+			<label kind="comments" x="663" y="501">FC-&gt;</label>
+			<nail x="595" y="484"/>
+			<nail x="782" y="578"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id34"/>
+			<label kind="assignment" x="178" y="170">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id35"/>
+			<target ref="id6"/>
+			<label kind="guard" x="186" y="348">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="161" y="365">usedRaftCounter+=1</label>
+			<label kind="comments" x="212" y="331">&lt;-FC</label>
+			<nail x="382" y="527"/>
+			<nail x="195" y="305"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id35"/>
+			<label kind="assignment" x="697" y="612">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id32"/>
+			<target ref="id7"/>
+			<label kind="guard" x="544" y="314">timeOnBoat&gt;=13</label>
+			<label kind="assignment" x="527" y="331">usedRaftCounter+=1</label>
+			<label kind="comments" x="569" y="289">&lt;-FW</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id32"/>
+			<label kind="assignment" x="110" y="603">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id33"/>
+			<target ref="id9"/>
+			<label kind="guard" x="136" y="493">timeOnBoat&gt;=13</label>
+			<label kind="assignment" x="110" y="510">usedRaftCounter+=1</label>
+			<label kind="comments" x="144" y="476">FW-&gt;</label>
+			<nail x="221" y="484"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id33"/>
+			<label kind="assignment" x="663" y="136">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id38"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-178" y="280">timeOnBoat&gt;=13</label>
+			<label kind="assignment" x="-195" y="297">usedRaftCounter+=1</label>
+			<label kind="comments" x="-25" y="246">&lt;-FW</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id38"/>
+			<label kind="assignment" x="-807" y="603">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id39"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-289" y="178">timeOnBoat&gt;=13</label>
+			<label kind="assignment" x="-289" y="161">usedRaftCounter+=1</label>
+			<label kind="comments" x="-697" y="442">FW-&gt;</label>
+			<nail x="-170" y="144"/>
+			<nail x="-697" y="442"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id39"/>
+			<label kind="assignment" x="17" y="127">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id37"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-484" y="569">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-459" y="586">usedRaftCounter+=1</label>
+			<label kind="comments" x="-459" y="518">&lt;-FC</label>
+			<nail x="-459" y="544"/>
+			<nail x="-612" y="331"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id37"/>
+			<label kind="assignment" x="-143" y="620">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id36"/>
+			<target ref="id9"/>
+			<label kind="guard" x="-212" y="450">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-255" y="425">usedRaftCounter+=1</label>
+			<label kind="comments" x="-102" y="476">FC-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id36"/>
+			<label kind="assignment" x="-637" y="178">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id40"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-850" y="323">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="-867" y="340">usedRaftCounter+=1</label>
+			<label kind="comments" x="-840" y="297">&lt;-FG</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id40"/>
+			<label kind="assignment" x="-909" y="535">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id41"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-1096" y="399">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="-1113" y="382">usedRaftCounter+=1</label>
+			<label kind="comments" x="-1045" y="425">FG-&gt;</label>
+			<nail x="-1054" y="374"/>
+			<nail x="-1054" y="493"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id41"/>
+			<label kind="assignment" x="-858" y="170">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id29"/>
+			<target ref="id4"/>
+			<label kind="guard" x="935" y="-25">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="926" y="-8">usedRaftCounter+=1,
+goatWolfTogetherCounter +=1</label>
+			<label kind="comments" x="977" y="-42">F-&gt;</label>
+			<nail x="977" y="-25"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id29"/>
+			<label kind="assignment" x="884" y="127">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id28"/>
+			<target ref="id7"/>
+			<label kind="guard" x="705" y="42">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="697" y="59">usedRaftCounter+=1</label>
+			<label kind="comments" x="739" y="25">&lt;-F</label>
+			<nail x="722" y="25"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id28"/>
+			<label kind="guard" x="731" y="-110">wolfHungryTime &lt; 40</label>
+			<label kind="assignment" x="791" y="-89">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id27"/>
+			<target ref="id3"/>
+			<label kind="guard" x="323" y="-25">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="315" y="-8">usedRaftCounter+=1</label>
+			<label kind="comments" x="357" y="34">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id27"/>
+			<label kind="assignment" x="195" y="127">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id26"/>
+			<target ref="id6"/>
+			<label kind="guard" x="170" y="-34">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="161" y="-51">usedRaftCounter+=1</label>
+			<label kind="comments" x="187" y="-8">&lt;–F</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id26"/>
+			<label kind="assignment" x="297" y="-102">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-357" y="-17">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-365" y="0">usedRaftCounter+=1</label>
+			<label kind="comments" x="-416" y="-8">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id25"/>
+			<label kind="synchronisation" x="-646" y="119">goatStartEating!</label>
+			<label kind="assignment" x="-646" y="136">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-603" y="-42">timeOnBoat&gt;=7</label>
+			<label kind="synchronisation" x="-612" y="-25">goatStopEating!</label>
+			<label kind="assignment" x="-629" y="-59">usedRaftCounter+=1</label>
+			<label kind="comments" x="-595" y="0">&lt;-F</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id24"/>
+			<label kind="assignment" x="-365" y="-153">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id4"/>
+			<label kind="guard" x="926" y="-484">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="909" y="-467">usedRaftCounter+=1,
+goatWolfTogetherCounter +=1</label>
+			<label kind="comments" x="969" y="-433">FC-&gt;</label>
+			<nail x="901" y="-484"/>
+			<nail x="1028" y="-340"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id23"/>
+			<label kind="assignment" x="246" y="-544">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id0"/>
+			<label kind="guard" x="731" y="-399">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="714" y="-382">usedRaftCounter+=1</label>
+			<label kind="comments" x="722" y="-416">&lt;-FC</label>
+			<nail x="705" y="-425"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id22"/>
+			<label kind="guard" x="739" y="-195">wolfHungryTime &lt; 40</label>
+			<label kind="assignment" x="739" y="-212">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id0"/>
+			<label kind="guard" x="442" y="-374">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="433" y="-357">usedRaftCounter+=1</label>
+			<label kind="comments" x="450" y="-408">&lt;-FG</label>
+			<nail x="476" y="-382"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id21"/>
+			<label kind="assignment" x="443" y="-178">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id3"/>
+			<label kind="guard" x="213" y="-284">timeOnBoat&gt;=21</label>
+			<label kind="assignment" x="204" y="-272">usedRaftCounter+=1</label>
+			<label kind="comments" x="280" y="-238">FG-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id20"/>
+			<label kind="assignment" x="127" y="-459">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-8" y="-348">timeOnBoat&gt;=13</label>
+			<label kind="synchronisation" x="-8" y="-365">goatStopEating!</label>
+			<label kind="assignment" x="-25" y="-331">usedRaftCounter+=1</label>
+			<label kind="comments" x="51" y="-391">&lt;-FW</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id19"/>
+			<label kind="assignment" x="-144" y="-161">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-187" y="-289">timeOnBoat&gt;=13</label>
+			<label kind="assignment" x="-221" y="-272">usedRaftCounter+=1</label>
+			<label kind="comments" x="-221" y="-204">FW-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-42" y="-484">goatStartEating!</label>
+			<label kind="assignment" x="-42" y="-467">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-390" y="-391">timeOnBoat&gt;=7</label>
+			<label kind="synchronisation" x="-382" y="-408">goatStopEating!</label>
+			<label kind="assignment" x="-391" y="-374">usedRaftCounter+=1</label>
+			<label kind="comments" x="-425" y="-416">&lt;-F</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id17"/>
+			<label kind="guard" x="-858" y="-314">wolfHungryTime &lt; 40</label>
+			<label kind="assignment" x="-858" y="-331">timeOnBoat=0</label>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-612" y="-459">timeOnBoat&gt;=7</label>
+			<label kind="assignment" x="-620" y="-493">usedRaftCounter+=1,
+goatWolfTogetherCounter +=1</label>
+			<label kind="comments" x="-629" y="-433">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-119" y="-544">goatStartEating!</label>
+			<label kind="assignment" x="-119" y="-578">timeOnBoat=0,
+wolfHungryTime = 0</label>
+		</transition>
+	</template>
+	<template>
+		<name>GoatEating</name>
+		<location id="id52" x="0" y="0">
+		</location>
+		<location id="id53" x="306" y="0">
+			<label kind="invariant" x="238" y="-34">goatEatsCabbage &lt;= 1</label>
+		</location>
+		<init ref="id52"/>
+		<transition>
+			<source ref="id52"/>
+			<target ref="id52"/>
+			<label kind="guard" x="-204" y="8">cabbage==0</label>
+			<label kind="synchronisation" x="-212" y="25">goatStopEating?</label>
+			<nail x="-170" y="-102"/>
+			<nail x="-170" y="102"/>
+		</transition>
+		<transition>
+			<source ref="id53"/>
+			<target ref="id53"/>
+			<label kind="guard" x="416" y="-25">(goatEatsCabbage &gt;= 1) and (cabbage &gt;0)</label>
+			<label kind="assignment" x="459" y="0">cabbage -= 1,
+goatEatsCabbage = 0</label>
+			<nail x="510" y="102"/>
+			<nail x="510" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id53"/>
+			<target ref="id52"/>
+			<label kind="synchronisation" x="93" y="153">goatStopEating?</label>
+			<nail x="306" y="170"/>
+			<nail x="0" y="170"/>
+		</transition>
+		<transition>
+			<source ref="id53"/>
+			<target ref="id52"/>
+			<label kind="guard" x="110" y="85">cabbage == 0</label>
+			<nail x="272" y="102"/>
+			<nail x="34" y="102"/>
+		</transition>
+		<transition>
+			<source ref="id52"/>
+			<target ref="id53"/>
+			<label kind="guard" x="93" y="-42">cabbage&gt;0</label>
+			<label kind="synchronisation" x="93" y="-25">goatStartEating?</label>
+			<label kind="assignment" x="76" y="0">goatEatsCabbage = 0</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+ModelProcess = Model();
+GoatEatingProcess = GoatEating();
+// List one or more processes to be composed into a system.
+system ModelProcess, GoatEatingProcess;
+    </system>
+	<queries>
+		<query>
+			<formula>E&lt;&gt; ModelProcess._FWGC and cabbage==20 and goatWolfTogetherCounter&gt;=2</formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>
