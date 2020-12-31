@@ -50,216 +50,429 @@
 		<location id="id14" x="85" y="1309">
 			<name x="75" y="1275">_FWGC</name>
 		</location>
+		<location id="id15" x="-969" y="-85">
+			<name x="-1005" y="-127">gaotIsDead</name>
+		</location>
+		<location id="id16" x="-527" y="-493">
+			<name x="-586" y="-527">FonBoatToWGC_F</name>
+		</location>
+		<location id="id17" x="-416" y="-357">
+			<name x="-426" y="-391">FonBoatToWGCF_</name>
+		</location>
+		<location id="id18" x="-161" y="-323">
+			<name x="-171" y="-357">FWonBoatToGC_FW</name>
+		</location>
+		<location id="id19" x="51" y="-323">
+			<name x="41" y="-357">FWonBoatToFWGC_</name>
+		</location>
+		<location id="id20" x="212" y="-255">
+			<name x="195" y="-289">FGonBoatToWC_FG_</name>
+		</location>
+		<location id="id21" x="493" y="-323">
+			<name x="483" y="-357">FGonBoatToWGCF_</name>
+		</location>
+		<location id="id22" x="739" y="-399">
+			<name x="680" y="-433">FConBoatToFWGC_</name>
+		</location>
+		<location id="id23" x="841" y="-467">
+			<name x="831" y="-501">FConBoatToWG_FC</name>
+		</location>
+		<location id="id24" x="-671" y="-59">
+			<name x="-681" y="-93">FonBoatToFGC_W</name>
+		</location>
+		<location id="id25" x="-391" y="51">
+			<name x="-401" y="17">FonBoatToGC_FW</name>
+		</location>
+		<location id="id26" x="85" y="-17">
+			<name x="75" y="-51">FonBoatToFWC_G</name>
+		</location>
+		<location id="id27" x="382" y="51">
+			<name x="372" y="17">FonBoatToWC_FG</name>
+		</location>
+		<location id="id28" x="697" y="-8">
+			<name x="687" y="-42">FonBoatToFWG_C</name>
+		</location>
+		<location id="id29" x="1003" y="8">
+			<name x="993" y="-26">FonBoatToWG_FC</name>
+		</location>
+		<location id="id30" x="1003" y="416">
+			<name x="994" y="382">FGonBoatToFWG_C</name>
+		</location>
+		<location id="id31" x="790" y="408">
+			<name x="780" y="374">FGonBoatToW_FGC</name>
+		</location>
+		<location id="id32" x="603" y="433">
+			<name x="561" y="399">FWonBoatToFWG_C</name>
+		</location>
+		<location id="id33" x="459" y="212">
+			<name x="449" y="178">FWonBoatToG_FWC</name>
+		</location>
+		<location id="id34" x="459" y="416">
+			<name x="417" y="382">FConBoatToW_FGC</name>
+		</location>
+		<location id="id35" x="391" y="544">
+			<name x="391" y="518">FConBoatToFWC_G</name>
+		</location>
+		<location id="id36" x="-178" y="425">
+			<name x="-188" y="391">FConBoatToG_FWC</name>
+		</location>
+		<location id="id37" x="-391" y="467">
+			<name x="-401" y="433">FConBoatToFGC_W</name>
+		</location>
+		<location id="id38" x="-195" y="238">
+			<name x="-205" y="204">FWonBoatToFWC_G</name>
+		</location>
+		<location id="id39" x="-357" y="144">
+			<name x="-367" y="110">FWonBoatToC_FWG</name>
+		</location>
+		<location id="id40" x="-858" y="391">
+			<name x="-868" y="357">FGonBoatToFGC_W</name>
+		</location>
+		<location id="id41" x="-1088" y="365">
+			<name x="-1098" y="331">FGonBoatToC_FWG</name>
+		</location>
+		<location id="id42" x="-756" y="850">
+			<name x="-766" y="816">FonBoatToFC_WG</name>
+		</location>
+		<location id="id43" x="-578" y="773">
+			<name x="-588" y="739">FonBoatToC_FWG</name>
+		</location>
+		<location id="id44" x="-93" y="867">
+			<name x="-103" y="833">FonBoatToFG_WC</name>
+		</location>
+		<location id="id45" x="153" y="816">
+			<name x="143" y="782">FonBoatToG_FWC</name>
+		</location>
+		<location id="id46" x="739" y="841">
+			<name x="729" y="807">FonBoatToFW_GC</name>
+		</location>
+		<location id="id47" x="977" y="833">
+			<name x="967" y="799">FonBoatToW_FGC</name>
+		</location>
+		<location id="id48" x="646" y="1198">
+			<name x="636" y="1164">FWonBoatTo_FWGC</name>
+		</location>
+		<location id="id49" x="204" y="1113">
+			<name x="194" y="1079">FGonBoatTo_FWGC</name>
+		</location>
+		<location id="id50" x="-212" y="1215">
+			<name x="-222" y="1181">FConBoatTo_FWGC</name>
+		</location>
 		<init ref="id0"/>
 		<transition>
-			<source ref="id13"/>
+			<source ref="id48"/>
 			<target ref="id14"/>
-			<label kind="comments" x="663" y="1147">FW-&gt;</label>
-			<nail x="654" y="1224"/>
+			<label kind="comments" x="374" y="1258">FW-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id48"/>
+		</transition>
+		<transition>
+			<source ref="id49"/>
+			<target ref="id14"/>
+			<label kind="comments" x="144" y="1215">FG-&gt;</label>
 		</transition>
 		<transition>
 			<source ref="id12"/>
+			<target ref="id49"/>
+		</transition>
+		<transition>
+			<source ref="id50"/>
 			<target ref="id14"/>
-			<label kind="comments" x="204" y="1062">FG-&gt;</label>
-			<nail x="229" y="1113"/>
+			<label kind="comments" x="-136" y="1258">FC-&gt;</label>
 		</transition>
 		<transition>
 			<source ref="id11"/>
-			<target ref="id14"/>
-			<label kind="comments" x="-323" y="1198">FC-&gt;</label>
-			<nail x="-238" y="1232"/>
+			<target ref="id50"/>
 		</transition>
 		<transition>
-			<source ref="id13"/>
+			<source ref="id47"/>
 			<target ref="id10"/>
-			<label kind="comments" x="994" y="782">F-&gt;</label>
-			<nail x="1011" y="841"/>
+			<label kind="comments" x="919" y="756">F-&gt;</label>
 		</transition>
 		<transition>
-			<source ref="id12"/>
-			<target ref="id9"/>
-			<label kind="comments" x="161" y="756">F-&gt;</label>
-			<nail x="178" y="816"/>
+			<source ref="id13"/>
+			<target ref="id47"/>
 		</transition>
 		<transition>
-			<source ref="id11"/>
-			<target ref="id8"/>
-			<label kind="comments" x="-569" y="722">F-&gt;</label>
-			<nail x="-552" y="765"/>
-		</transition>
-		<transition>
-			<source ref="id10"/>
-			<target ref="id6"/>
-			<label kind="comments" x="467" y="552">&lt;-FC</label>
-			<nail x="374" y="561"/>
-		</transition>
-		<transition>
-			<source ref="id10"/>
-			<target ref="id7"/>
-			<label kind="comments" x="986" y="382">&lt;-FG</label>
-			<nail x="986" y="416"/>
-		</transition>
-		<transition>
-			<source ref="id10"/>
+			<source ref="id46"/>
 			<target ref="id13"/>
-			<label kind="comments" x="732" y="764">&lt;-F</label>
-			<nail x="714" y="850"/>
+			<label kind="comments" x="833" y="884">&lt;-F</label>
 		</transition>
 		<transition>
-			<source ref="id9"/>
-			<target ref="id5"/>
-			<label kind="comments" x="-374" y="450">&lt;-FC</label>
-			<nail x="-391" y="459"/>
+			<source ref="id10"/>
+			<target ref="id46"/>
 		</transition>
 		<transition>
-			<source ref="id9"/>
-			<target ref="id7"/>
-			<label kind="comments" x="569" y="382">&lt;-FW</label>
-			<nail x="578" y="433"/>
+			<source ref="id45"/>
+			<target ref="id9"/>
+			<label kind="comments" x="127" y="731">F-&gt;</label>
 		</transition>
 		<transition>
-			<source ref="id9"/>
+			<source ref="id12"/>
+			<target ref="id45"/>
+		</transition>
+		<transition>
+			<source ref="id44"/>
 			<target ref="id12"/>
-			<label kind="comments" x="-144" y="824">&lt;-F</label>
-			<nail x="-119" y="867"/>
+			<label kind="comments" x="-34" y="926">&lt;-F</label>
 		</transition>
 		<transition>
-			<source ref="id8"/>
+			<source ref="id9"/>
+			<target ref="id44"/>
+		</transition>
+		<transition>
+			<source ref="id43"/>
+			<target ref="id8"/>
+			<label kind="comments" x="-680" y="697">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id43"/>
+		</transition>
+		<transition>
+			<source ref="id42"/>
 			<target ref="id11"/>
-			<label kind="comments" x="-824" y="850">&lt;-F</label>
-			<nail x="-773" y="867"/>
+			<label kind="comments" x="-671" y="909">&lt;-F</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
-			<target ref="id6"/>
-			<label kind="comments" x="-238" y="204">&lt;-FW</label>
-			<nail x="-212" y="229"/>
+			<target ref="id42"/>
 		</transition>
 		<transition>
-			<source ref="id8"/>
-			<target ref="id5"/>
-			<label kind="comments" x="-901" y="348">&lt;-FG</label>
-			<nail x="-875" y="391"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
-			<target ref="id4"/>
-			<label kind="comments" x="926" y="0">F-&gt;</label>
-			<nail x="986" y="0"/>
-		</transition>
-		<transition>
-			<source ref="id6"/>
-			<target ref="id3"/>
-			<label kind="comments" x="297" y="34">F-&gt;</label>
-			<nail x="357" y="42"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
+			<source ref="id31"/>
 			<target ref="id10"/>
-			<label kind="comments" x="714" y="348">FG-&gt;</label>
-			<nail x="748" y="416"/>
+			<label kind="comments" x="833" y="476">FG-&gt;</label>
 		</transition>
 		<transition>
 			<source ref="id7"/>
-			<target ref="id9"/>
-			<label kind="comments" x="494" y="212">FW-&gt;</label>
-			<nail x="476" y="221"/>
+			<target ref="id31"/>
 		</transition>
 		<transition>
-			<source ref="id6"/>
-			<target ref="id10"/>
-			<label kind="comments" x="416" y="399">FC-&gt;</label>
-			<nail x="459" y="450"/>
-		</transition>
-		<transition>
-			<source ref="id6"/>
-			<target ref="id8"/>
-			<label kind="comments" x="-314" y="136">FW-&gt;</label>
-			<nail x="-340" y="161"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id9"/>
-			<label kind="comments" x="-127" y="289">FC-&gt;</label>
-			<nail x="-68" y="340"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id8"/>
-			<label kind="comments" x="-1105" y="306">FG-&gt;</label>
-			<nail x="-1122" y="365"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id2"/>
-			<label kind="comments" x="-459" y="34">F-&gt;</label>
-			<nail x="-433" y="59"/>
-		</transition>
-		<transition>
-			<source ref="id4"/>
+			<source ref="id30"/>
 			<target ref="id7"/>
-			<label kind="comments" x="714" y="-51">&lt;-F</label>
-			<nail x="705" y="-8"/>
+			<label kind="comments" x="935" y="289">&lt;-FG</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id30"/>
+		</transition>
+		<transition>
+			<source ref="id34"/>
+			<target ref="id10"/>
+			<label kind="comments" x="663" y="501">FC-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id34"/>
+		</transition>
+		<transition>
+			<source ref="id35"/>
+			<target ref="id6"/>
+			<label kind="comments" x="229" y="340">&lt;-FC</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id35"/>
+		</transition>
+		<transition>
+			<source ref="id32"/>
+			<target ref="id7"/>
+			<label kind="comments" x="637" y="323">&lt;-FW</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id32"/>
+		</transition>
+		<transition>
+			<source ref="id33"/>
+			<target ref="id9"/>
+			<label kind="comments" x="144" y="476">FW-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id33"/>
+		</transition>
+		<transition>
+			<source ref="id38"/>
+			<target ref="id6"/>
+			<label kind="comments" x="-51" y="204">&lt;-FW</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id38"/>
+		</transition>
+		<transition>
+			<source ref="id39"/>
+			<target ref="id8"/>
+			<label kind="comments" x="-688" y="408">FW-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id39"/>
+		</transition>
+		<transition>
+			<source ref="id37"/>
+			<target ref="id5"/>
+			<label kind="comments" x="-603" y="272">&lt;-FC</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id37"/>
+		</transition>
+		<transition>
+			<source ref="id36"/>
+			<target ref="id9"/>
+			<label kind="comments" x="-102" y="476">FC-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id36"/>
+		</transition>
+		<transition>
+			<source ref="id40"/>
+			<target ref="id5"/>
+			<label kind="comments" x="-840" y="297">&lt;-FG</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id40"/>
+		</transition>
+		<transition>
+			<source ref="id41"/>
+			<target ref="id8"/>
+			<label kind="comments" x="-1037" y="484">FG-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id41"/>
+		</transition>
+		<transition>
+			<source ref="id29"/>
+			<target ref="id4"/>
+			<label kind="comments" x="960" y="-68">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id29"/>
+		</transition>
+		<transition>
+			<source ref="id28"/>
+			<target ref="id7"/>
+			<label kind="comments" x="722" y="68">&lt;-F</label>
 		</transition>
 		<transition>
 			<source ref="id4"/>
-			<target ref="id0"/>
-			<label kind="comments" x="697" y="-374">&lt;-FC</label>
-			<nail x="731" y="-391"/>
+			<target ref="id28"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id0"/>
-			<label kind="comments" x="238" y="-289">&lt;-FG</label>
-			<nail x="221" y="-263"/>
+			<source ref="id27"/>
+			<target ref="id3"/>
+			<label kind="comments" x="403" y="-9">F-&gt;</label>
 		</transition>
 		<transition>
-			<source ref="id3"/>
+			<source ref="id6"/>
+			<target ref="id27"/>
+		</transition>
+		<transition>
+			<source ref="id26"/>
 			<target ref="id6"/>
-			<label kind="comments" x="94" y="-34">&lt;–F</label>
-			<nail x="110" y="-8"/>
+			<label kind="comments" x="103" y="93">&lt;–F</label>
 		</transition>
 		<transition>
-			<source ref="id2"/>
+			<source ref="id3"/>
+			<target ref="id26"/>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id2"/>
+			<label kind="comments" x="-373" y="-9">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id25"/>
+		</transition>
+		<transition>
+			<source ref="id24"/>
 			<target ref="id5"/>
-			<label kind="comments" x="-646" y="-102">&lt;-F</label>
-			<nail x="-637" y="-76"/>
+			<label kind="comments" x="-684" y="72">&lt;-F</label>
 		</transition>
 		<transition>
 			<source ref="id2"/>
+			<target ref="id24"/>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id4"/>
+			<label kind="comments" x="871" y="-268">FC-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id23"/>
+		</transition>
+		<transition>
+			<source ref="id22"/>
 			<target ref="id0"/>
-			<label kind="comments" x="0" y="-289">&lt;-FW</label>
-			<nail x="68" y="-289"/>
+			<label kind="comments" x="569" y="-425">&lt;-FC</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id22"/>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id0"/>
+			<label kind="comments" x="314" y="-399">FG-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id21"/>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id3"/>
+			<label kind="comments" x="272" y="-187">&lt;-FG</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id20"/>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id0"/>
+			<label kind="comments" x="69" y="-400">&lt;-FW</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id19"/>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id2"/>
+			<label kind="comments" x="-221" y="-204">FW-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id18"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id0"/>
+			<label kind="comments" x="-380" y="-404">&lt;-F</label>
 		</transition>
 		<transition>
 			<source ref="id1"/>
-			<target ref="id0"/>
-			<label kind="comments" x="-442" y="-382">&lt;-F</label>
-			<nail x="-425" y="-357"/>
+			<target ref="id17"/>
 		</transition>
 		<transition>
-			<source ref="id0"/>
-			<target ref="id3"/>
-			<label kind="comments" x="467" y="-365">FG-&gt;</label>
-			<nail x="484" y="-331"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id4"/>
-			<label kind="comments" x="833" y="-442">FC-&gt;</label>
-			<nail x="816" y="-459"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id2"/>
-			<label kind="comments" x="-153" y="-365">FW-&gt;</label>
-			<nail x="-127" y="-323"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
+			<source ref="id16"/>
 			<target ref="id1"/>
-			<label kind="comments" x="-501" y="-467">F-&gt;</label>
-			<nail x="-510" y="-476"/>
+			<label kind="comments" x="-705" y="-442">F-&gt;</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id16"/>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
