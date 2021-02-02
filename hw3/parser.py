@@ -8,7 +8,6 @@
 
 import sys
 import argparse
-import numpy
 
 
 def err(text):
@@ -20,11 +19,6 @@ def __init__():
     ## Spracovanie vstupných argumentov
     input_file = sys.stdin
     parse_arguments(input_file)
-
-    ## Načítanie inštrukcií z XML reprezentácie
-    #self.xml_read()
-    #self.parse_instructions()
-    #self.instructions.sort(key=self.sort_order)
 
 
 def parse_arguments(input_file):
@@ -50,12 +44,15 @@ def parse_arguments(input_file):
     else:
         if args.input:
             try:
+                array = []
+                i = 1
                 with open(args.input) as f:
                     content = f.readlines()
-                # you may also want to remove whitespace characters like `\n` at the end of each line
                 content = [line.strip() for line in content]
-                content = [line.replace(",,", ",a,") for line in content]
-                content = [line.replace(",,", ",a,") for line in content]
+                i = 1
+                for line in content:
+                    line.replace(',', ('a' + str(i)))
+                    i += 1
 
             except:
                 err("Error: Input file not found or insufficient permissions!")
@@ -64,30 +61,30 @@ def parse_arguments(input_file):
                 f.close()
             except:
                 err("Error: Closing CSV file failed!")
-
-            big_array = []
-            i = 1
-            for line in content:
-                small_array = []
-                j = 1
-                temp = ""
-                for elem in line:
-                    print(type(elem))
-                    if elem != ',':
-                        if elem == 'a':
-                            small_array.append(elem + str(i) + str(j))
-                            j += 1
-                        else:
-                            temp = elem
-                            if elem == 'd' or elem == 'k':
-                                pass
-                            if elem.isdigit():
-                                small_array.append(temp + elem)
-                            else:
-                                small_array.append(elem)
-                big_array.append(small_array)
-                i += 1
-            print(big_array)
+            print(content)
+            # big_array = []
+            # i = 1
+            # for line in content:
+            #     small_array = []
+            #     temp = ""
+            #     idx = 0
+            #     for elem in line:
+            #         temp = elem
+            #         if elem != ',':
+            #             if elem == 'a':
+            #                 small_array.append(elem + str(i))
+            #                 i += 1
+            #             else:
+            #                 if not elem.isdigit() and line[idx+1].isdigit():
+            #                     small_array.append(elem + line[idx])
+            #                 if elem.isdigit():
+            #                     pass
+            #                 else:
+            #                     small_array.append(elem)
+            #         idx += 1
+            #     big_array.append(small_array)
+            #     i += 1
+            # print(big_array)
 
         exit()
 

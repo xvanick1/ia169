@@ -39,11 +39,13 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
     """
 
     k = 0
-
-    # Implement the BMC algorithm here
-
     s = Solver()
     s.add(init)  # stav init pridá do solveru
+
+    # Implement the BMC algorithm here
+    if backward:
+        pass
+
     while True:
 
         '''Check max k reached'''
@@ -115,4 +117,3 @@ Check backwards: {7}
     res = bmc(maxk, V.xs, V.xns, prp, init, trans, args.backward, args.completeness)
 
     exit(0 if res == True else 1)
-

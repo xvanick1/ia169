@@ -44,8 +44,6 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
     # Implement the BMC algorithm here
     k = 0
     s = Solver()
-    s2 = Solver()
-    history = []
 
     if backward:
         pass
@@ -81,8 +79,6 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
 
     formulae = init
     formulae = subst_var_to_var_k(formulae, xs, k)
-    if completeness:
-        s2.add(formulae)
     while True:
         pass
 
@@ -101,14 +97,6 @@ def bmc(maxk, xs, xns, prp, init, trans, backward = False, completeness = False)
 
         temp = subst_var_to_var_k(trans, xs, k)
         temp = subst_var_to_var_nk(temp, xns, k + 1)
-
-        if completeness:
-            if s2.check(And(Implies(temp, history[k]), Implies(history[k], temp))) == unsat:
-                print(f"The property does hold.")
-                print(f"Finished with k={k}.")
-                return False
-
-            history.append(temp)
 
         formulae = And(formulae, temp)
         k += 1
@@ -161,4 +149,3 @@ Check backwards: {7}
     res = bmc(maxk, V.xs, V.xns, prp, init, trans, args.backward, args.completeness)
 
     exit(0 if res == True else 1)
-
